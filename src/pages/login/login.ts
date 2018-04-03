@@ -33,13 +33,13 @@ export class LoginPage {
         {
             let loading = this.loadingCtrl.create({
                 content: "<div>Login wait...</div>",
-                duration: 100000000
+                duration: 100
             });
             loading.present();
             console.log(this.login);
               this.authService.login(this.login).subscribe((jsonResponse) => {
                   loading.dismiss();
-                  console.log(jsonResponse);
+                  console.log("JSONRESPONSE",jsonResponse);
                   if(jsonResponse.pass=="true"){
                     this.storage.set('isLoggedIn', true);
                     this.storage.set('userData',jsonResponse);
@@ -51,7 +51,6 @@ export class LoginPage {
                   else{
                     this.showToast("Wrong username or Password");
                     this.storage.set('isLoggedIn', false);
-                    console.log("HIIIII",jsonResponse);
                   }
 
               });

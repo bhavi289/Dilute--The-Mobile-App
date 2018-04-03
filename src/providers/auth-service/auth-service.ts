@@ -15,12 +15,14 @@ export class AuthServiceProvider {
 
     loginurl : string;
     drinkingurl : string;
+    getQuantityDetailsurl : string;
 
     constructor(public http: Http) {
         console.log('Hello AuthServiceProvider Provider');
         this.http = http;
-        this.loginurl = "http://127.0.0.1:8000/users/api/login/";
-        this.drinkingurl = "http://127.0.0.1:8000/sensors/api/drinking/";
+        this.loginurl = "http://127.0.0.1:8000/api/login/";
+        this.getQuantityDetailsurl = "http://127.0.0.1:8000/api/getQuantityDetailsurl/";
+        // this.drinkingurl = "http://127.0.0.1:8000/sensors/api/drinking/";
     }
 
     login(user_credentials) {
@@ -38,66 +40,81 @@ export class AuthServiceProvider {
             .map(res => res.json())
             .catch(this.handleError);
     }
-    drinking(id){
+    getQuantityDetails(id,email){
         let body = {
             "id":id,
-            "res":6
+            "email":email,
         };
 
         let headers = new Headers({
             'Content-Type' : 'application/json; charset=utf-8'
         });
         let options = new RequestOptions({ headers: headers});
-        console.log("hi id = ",body);
-        return this.http.post(this.drinkingurl, body, options)
+        console.log(body);
+        return this.http.post(this.getQuantityDetailsurl, body, options)
             .map(res => res.json())
-            .catch(this.handleError);
+            .catch(this.handleError);        
     }
-    bathing(id){
-        let body = {
-            "id":id,
-            "res":7
-        };
+    // drinking(id){
+    //     let body = {
+    //         "id":id,
+    //         "res":6
+    //     };
 
-        let headers = new Headers({
-            'Content-Type' : 'application/json; charset=utf-8'
-        });
-        let options = new RequestOptions({ headers: headers});
-        console.log("hi id = ",body);
-        return this.http.post(this.drinkingurl, body, options)
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
-    plants(id){
-        let body = {
-            "id":id,
-            "res":8
-        };
+    //     let headers = new Headers({
+    //         'Content-Type' : 'application/json; charset=utf-8'
+    //     });
+    //     let options = new RequestOptions({ headers: headers});
+    //     console.log("hi id = ",body);
+    //     return this.http.post(this.drinkingurl, body, options)
+    //         .map(res => res.json())
+    //         .catch(this.handleError);
+    // }
+    // bathing(id){
+    //     let body = {
+    //         "id":id,
+    //         "res":7
+    //     };
 
-        let headers = new Headers({
-            'Content-Type' : 'application/json; charset=utf-8'
-        });
-        let options = new RequestOptions({ headers: headers});
-        console.log("hi id = ",body);
-        return this.http.post(this.drinkingurl, body, options)
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
-    car(id){
-        let body = {
-            "id":id,
-            "res":9
-        };
+    //     let headers = new Headers({
+    //         'Content-Type' : 'application/json; charset=utf-8'
+    //     });
+    //     let options = new RequestOptions({ headers: headers});
+    //     console.log("hi id = ",body);
+    //     return this.http.post(this.drinkingurl, body, options)
+    //         .map(res => res.json())
+    //         .catch(this.handleError);
+    // }
+    // plants(id){
+    //     let body = {
+    //         "id":id,
+    //         "res":8
+    //     };
 
-        let headers = new Headers({
-            'Content-Type' : 'application/json; charset=utf-8'
-        });
-        let options = new RequestOptions({ headers: headers});
-        console.log("hi id = ",body);
-        return this.http.post(this.drinkingurl, body, options)
-            .map(res => res.json())
-            .catch(this.handleError);
-    }
+    //     let headers = new Headers({
+    //         'Content-Type' : 'application/json; charset=utf-8'
+    //     });
+    //     let options = new RequestOptions({ headers: headers});
+    //     console.log("hi id = ",body);
+    //     return this.http.post(this.drinkingurl, body, options)
+    //         .map(res => res.json())
+    //         .catch(this.handleError);
+    // }
+    // car(id){
+    //     let body = {
+    //         "id":id,
+    //         "res":9
+    //     };
+
+    //     let headers = new Headers({
+    //         'Content-Type' : 'application/json; charset=utf-8'
+    //     });
+    //     let options = new RequestOptions({ headers: headers});
+    //     console.log("hi id = ",body);
+    //     return this.http.post(this.drinkingurl, body, options)
+    //         .map(res => res.json())
+    //         .catch(this.handleError);
+    // }
 
     handleError(error: Response) {
         console.error(error);

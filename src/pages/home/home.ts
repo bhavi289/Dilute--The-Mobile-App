@@ -51,23 +51,14 @@ export class HomePage {
         this.navCtrl.setRoot(LoginPage);
   }
   viewProfile(){
-  	this.navCtrl.push(Page1Page);
+  	this.navCtrl.push(ViewProfilePage);
   }
   refresh(){
     this.ionViewDidLoad();
   }
-  graphs(){
-    this.storage.get('userData').then((val) => {
-      this.authService.drinking(val['id']).subscribe((jsonResponse) => {
-        console.log(jsonResponse);
-        this.distance=jsonResponse.distance;
-        console.log("hi", this.distance, jsonResponse.distance)
-        this.soilmoist=jsonResponse.soilmoist;
-        this.temp=jsonResponse.temp;
-        this.navCtrl.push(GraphsPage, {"distance":this.distance, "soilmoist":this.soilmoist,"temp":this.temp});
-        });
-    })
-    console.log("hi", this.distance)
+  graphs(id:number){
+    console.log("hi", id);
+    this.navCtrl.push(GraphsPage, {"id":id})
     
   }
   

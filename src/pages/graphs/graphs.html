@@ -2,48 +2,71 @@
  
 <ion-header class="inner-pages">
   <ion-navbar no-border-bottom color="headerColor"> 
-  	<div style="color:white">Data For Drinking Water Level</div>
+  	<div style="color:white">Statistics</div>
   </ion-navbar>
  <ion-grid clear class="header-grid">
       <ion-row> 
-        <ion-col>
+        <ion-col col-3>
           <button ion-button (click)="refresh()" color="headerColor" clear>Refresh</button>
+        </ion-col>
+        <ion-col col-9>
+        	 <ion-item>
+    <ion-select class="time" style="width:100%;" (ionChange)="onSelectChange($event)"  interface="action-sheet" >
+       
+          <ion-option selected value="1"> Latest</ion-option>
+          <!-- <ion-option value="2"> Last 1 week</ion-option>
+           <ion-option value="3"> Last 2 week      </ion-option>
+            <ion-option value="4"> Last 30 days  </ion-option> -->
+ 
+        </ion-select>
+    </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid> 
+   
 </ion-header>
 
 <ion-content>
- 
+	
+ 	
 
 
 
     <ion-card>
       <ion-card-header>
-        WATER QUANTITY
+        WATER LEVEL STATS
       </ion-card-header>
       <ion-card-content>
         <canvas #lineCanvas></canvas>
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <!-- <ion-card>
       <ion-card-header>
-        pH LEVEL
+        SOIL MOISTURE
       </ion-card-header>
       <ion-card-content>
-        <canvas #barCanvas></canvas>
+        <canvas #lineCanvas2></canvas>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-header>
-        TURBIDITY
+        WATER LEVEL
       </ion-card-header>
       <ion-card-content>
-        <canvas #line></canvas>
+        <canvas #lineCanvas3></canvas>
       </ion-card-content>
     </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        HUMIDITY
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas4></canvas>
+      </ion-card-content>
+    </ion-card> -->
  
     
  
