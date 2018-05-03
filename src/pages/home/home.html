@@ -1,4 +1,4 @@
-<ion-header class="inner-pages">
+ <ion-header class="inner-pages">
   <ion-navbar no-border-bottom color="headerColor"> 
   </ion-navbar>
  <ion-grid clear class="header-grid">
@@ -29,69 +29,307 @@
 </ion-header>
 
 
-
-<ion-content class="pane"> 
-
-    <ion-card>
-      <canvas #lineCanvas1></canvas>
+ <ion-content class="pane">
+ 	<ion-list class="attendance-hader">
+ 		<ion-item> 
+		  Select Mode Of Operation
+		</ion-item>
+ 	</ion-list>
+    <div class="container-list">
+    <ion-card *ngIf="mode" class="listof-leader">
+        <ion-list>
+            <ion-item>              
+               <button (click)="changeMode(1)" style="width:50%"  class="" ion-button outline icon-only item-end>
+                MANUAL		    	
+              </button>
+              <button style="width:50%; background-color:#3ad74a"  ion-button  outline icon-only item-end>
+                  <span style="color:white">AUTOMATIC	   </span> 	
+               </button>
+            </ion-item>
+          </ion-list>
     </ion-card>
-    <ion-card>
-      <canvas #lineCanvas2></canvas>
+    <ion-card *ngIf="!mode" class="listof-leader">
+        <ion-list>
+            <ion-item>              
+               <button style="width:50%; background-color:#3ad74a"  class="" ion-button outline icon-only item-end>
+                  <span style="color:white">MANUAL	</span>	    	
+              </button>
+              <button (click)="changeMode(0)" style="width:50%;"  ion-button  outline icon-only item-end>
+                  AUTOMATIC
+               </button>
+            </ion-item>
+          </ion-list>
     </ion-card>
-    <ion-card>
-      <canvas #lineCanvas3></canvas>
+    <ion-list class="attendance-hader">
+        <ion-item> 
+         Categories
+           <ion-badge item-end> 
+             
+         </ion-badge>
+       </ion-item>
+      </ion-list>
+    
+    <div *ngIf="!mode">
+		<ion-card *ngIf="DrinkingActuator" class="listof-leader">
+			<ion-list>
+			  <ion-item>
+			    <h2>DRINKING</h2>
+          <p>Quantity:<span>10%</span></p> 
+          
+			    <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
+			    	<ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+			    </button>
+			     <button  (click)="switchOff(1)" class="" ion-button outline icon-only item-end>
+			    	<ion-icon  name="ios-close-outline"></ion-icon>			    	
+          </button>
+
+			  </ion-item>
+			</ion-list>
     </ion-card>
-    <ion-card>
-      <canvas #lineCanvas4></canvas>
-    </ion-card>
-
-    <button ion-button block (click)="date_wise_data()">SEE ANALYTICS</button>
- 
-
-  <!-- <ion-list *ngSwitchCase="'date_wise_data'">
-    <ion-grid class="category-collection">
-  <ion-row>
-    <ion-col col-6>
-      <ion-card (click)="graphs(1)" class="cs-list no-margin text-center">
-        <img style="height:80%;width:80%;" src="./assets/images/waterlevel.png" alt="" />
-        <ion-card-header>
-          <h3>Drinking Water</h3>
-        </ion-card-header>
-        <br><br>
+    <ion-card *ngIf="!DrinkingActuator" class="listof-leader">
+        <ion-list>
+          <ion-item>
+            <h2>DRINKING</h2>
+            <p>Quantity:<span>10%</span></p> 
+            
+            <button (click)="switchOn(1)" ion-button  outline icon-only item-end>
+              <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+            </button>
+             <button  [ngStyle]="{'background-color': buttonColor2}" class="" ion-button outline icon-only item-end>
+              <ion-icon  name="ios-close-outline"></ion-icon>			    	
+            </button>
+  
+          </ion-item>
+        </ion-list>
       </ion-card>
-    </ion-col>
-    <ion-col col-6>
-       <ion-card (click)="graphs(2)" class="cs-list no-margin text-center">
-        <img style="height:80%;width:80%;" src="./assets/images/bath.png" alt="" />
-        <ion-card-header>
-          <h3>Bathing Water</h3>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-6>
-       <ion-card (click)="graphs(3)" class="cs-list no-margin text-center">
-        <img style="height:80%;width:80%;" src="./assets/images/plant.png" alt="" />
-        <ion-card-header>
-          <h3>Plants</h3>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col col-6>
-       <ion-card (click)="graphs(4)" class="cs-list no-margin text-center">
-        <img style="height:80%;width:80%;" src="./assets/images/car.png" alt="" />
-        <ion-card-header>
-          <h3>Car Wash</h3>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid> 
-  </ion-list> -->
 
+      <ion-card *ngIf="BathingActuator" class="listof-leader">
+          <ion-list>
+            <ion-item>
+              <h2>BATHING</h2>
+              <p>Quantity:<span>10%</span></p> 
+              
+              <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
+                <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+              </button>
+               <button  (click)="switchOff(2)" class="" ion-button outline icon-only item-end>
+                <ion-icon  name="ios-close-outline"></ion-icon>			    	
+              </button>
+    
+            </ion-item>
+          </ion-list>
+        </ion-card>
+        <ion-card *ngIf="!BathingActuator" class="listof-leader">
+            <ion-list>
+              <ion-item>
+                <h2>BATHING</h2>
+                <p>Quantity:<span>10%</span></p> 
+                
+                <button  (click)="switchOn(2)" ion-button  outline icon-only item-end>
+                  <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                </button>
+                 <button [ngStyle]="{'background-color': buttonColor2}" class="" ion-button outline icon-only item-end>
+                  <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                </button>
+      
+              </ion-item>
+            </ion-list>
+          </ion-card>
 
+          <ion-card *ngIf="PlantsActuator" class="listof-leader">
+              <ion-list>
+                <ion-item>
+                  <h2>PLANTS</h2>
+                  <p>Quantity:<span>10%</span></p> 
+                  
+                  <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
+                    <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                  </button>
+                   <button (click)="switchOff(3)"  class="" ion-button outline icon-only item-end>
+                    <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                  </button>
+        
+                </ion-item>
+              </ion-list>
+            </ion-card>
+            <ion-card *ngIf="!PlantsActuator" class="listof-leader">
+                <ion-list>
+                  <ion-item>
+                    <h2>PLANTS</h2>
+                    <p>Quantity:<span>10%</span></p> 
+                    
+                    <button (click)="switchOn(3)" ion-button  outline icon-only item-end>
+                      <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                    </button>
+                     <button  [ngStyle]="{'background-color': buttonColor2}" class="" ion-button outline icon-only item-end>
+                      <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                    </button>
+          
+                  </ion-item>
+                </ion-list>
+              </ion-card>
 
-
-
-</ion-content>
+              <ion-card *ngIf="CarActuator" class="listof-leader">
+                  <ion-list>
+                    <ion-item>
+                      <h2>CAR</h2>
+                      <p>Quantity:<span>10%</span></p> 
+                      
+                      <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
+                        <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                      </button>
+                       <button (click)="switchOff(4)" class="" ion-button outline icon-only item-end>
+                        <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                      </button>
+            
+                    </ion-item>
+                  </ion-list>
+                </ion-card>
+                <ion-card *ngIf="!CarActuator" class="listof-leader">
+                    <ion-list>
+                      <ion-item>
+                        <h2>CAR</h2>
+                        <p>Quantity:<span>10%</span></p> 
+                        
+                        <button (click)="switchOn(4)" ion-button  outline icon-only item-end>
+                          <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                        </button>
+                         <button  [ngStyle]="{'background-color': buttonColor2}" class="" ion-button outline icon-only item-end>
+                          <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                        </button>
+              
+                      </ion-item>
+                    </ion-list>
+                  </ion-card>      
+                  
+                  </div>
+                  
+                  <div *ngIf="mode">
+                      <ion-card *ngIf="DrinkingActuator" class="listof-leader">
+                        <ion-list>
+                          <ion-item>
+                            <h2>DRINKING</h2>
+                            <p>Quantity:<span>10%</span></p> 
+                            
+                            <button   ion-button  outline icon-only item-end>
+                              <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                            </button>
+                             <button   class="" ion-button outline icon-only item-end>
+                              <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                            </button>
+                  
+                          </ion-item>
+                        </ion-list>
+                      </ion-card>
+                      <ion-card *ngIf="!DrinkingActuator" class="listof-leader">
+                          <ion-list>
+                            <ion-item>
+                              <h2>DRINKING</h2>
+                              <p>Quantity:<span>10%</span></p> 
+                              
+                              <p item-end> switch to manual</p>
+                    
+                            </ion-item>
+                          </ion-list>
+                        </ion-card>
+                  
+                        <ion-card *ngIf="BathingActuator" class="listof-leader">
+                            <ion-list>
+                              <ion-item>
+                                <h2>BATHING</h2>
+                                <p>Quantity:<span>10%</span></p> 
+                                
+                                <button   ion-button  outline icon-only item-end>
+                                  <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                </button>
+                                 <button   class="" ion-button outline icon-only item-end>
+                                  <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                </button>
+                      
+                              </ion-item>
+                            </ion-list>
+                          </ion-card>
+                          <ion-card *ngIf="!BathingActuator" class="listof-leader">
+                              <ion-list>
+                                <ion-item>
+                                  <h2>BATHING</h2>
+                                  <p>Quantity:<span>10%</span></p> 
+                                  
+                                  <button  ion-button  outline icon-only item-end>
+                                    <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                  </button>
+                                   <button  class="" ion-button outline icon-only item-end>
+                                    <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                  </button>
+                        
+                                </ion-item>
+                              </ion-list>
+                            </ion-card>
+                  
+                            <ion-card *ngIf="PlantsActuator" class="listof-leader">
+                                <ion-list>
+                                  <ion-item>
+                                    <h2>PLANTS</h2>
+                                    <p>Quantity:<span>10%</span></p> 
+                                    
+                                    <button  ion-button  outline icon-only item-end>
+                                      <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                    </button>
+                                     <button  class="" ion-button outline icon-only item-end>
+                                      <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                    </button>
+                          
+                                  </ion-item>
+                                </ion-list>
+                              </ion-card>
+                              <ion-card *ngIf="!PlantsActuator" class="listof-leader">
+                                  <ion-list>
+                                    <ion-item>
+                                      <h2>PLANTS</h2>
+                                      <p>Quantity:<span>10%</span></p> 
+                                      
+                                      <button ion-button  outline icon-only item-end>
+                                        <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                      </button>
+                                       <button class="" ion-button outline icon-only item-end>
+                                        <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                      </button>
+                            
+                                    </ion-item>
+                                  </ion-list>
+                                </ion-card>
+                  
+                                <ion-card *ngIf="CarActuator" class="listof-leader">
+                                    <ion-list>
+                                      <ion-item>
+                                        <h2>CAR</h2>
+                                        <p>Quantity:<span>10%</span></p> 
+                                        
+                                        <button  ion-button  outline icon-only item-end>
+                                          <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                        </button>
+                                         <button  class="" ion-button outline icon-only item-end>
+                                          <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                        </button>
+                              
+                                      </ion-item>
+                                    </ion-list>
+                                  </ion-card>
+                                  <ion-card *ngIf="!CarActuator" class="listof-leader">
+                                      <ion-list>
+                                        <ion-item>
+                                          <h2>CAR</h2>
+                                          <p>Quantity:<span>10%</span></p> 
+                                          
+                                          <button  ion-button  outline icon-only item-end>
+                                            <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                          </button>
+                                           <button  class="" ion-button outline icon-only item-end>
+                                            <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                          </button>
+                                
+                                        </ion-item>
+                                      </ion-list>
+                                    </ion-card>      
+                                    
+                                    </div>

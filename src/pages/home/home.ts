@@ -42,7 +42,13 @@ export class HomePage {
   name: string;
   public distance
   public soilmoist;
-  public temp;
+    public temp;
+    public DrinkingActuator: boolean;
+    public BathingActuator :boolean;  
+    public PlantsActuator :boolean;  
+    public CarActuator: boolean; 
+    public mode: boolean;
+        
   label: any;
   drinking_distance: any;
   plant_distance: any;
@@ -50,6 +56,8 @@ export class HomePage {
   car_distance: any;
   date: any;
   time: any;
+    buttonColor: string = '#a3c6ff';
+    buttonColor2: string = '#00307f';  
 
   data: string="latest_data";
 
@@ -64,7 +72,12 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-  
+      this.DrinkingActuator = false;
+      this.BathingActuator = true;
+      this.PlantsActuator = false;
+      this.CarActuator = true;
+      this.mode = true;
+      
     console.log('ionViewDidLoad HomePage');
     this.storage.get('userData').then((val) => {
     	this.name=val['name'];
@@ -120,6 +133,7 @@ export class HomePage {
   date_wise_data(){
     this.navCtrl.push(GraphsPage);
   }
+  
 
   plotGraph(drinking_distance: any, plant_distance: any, car_distance: any, bathing_distance: any){
       if(this.lineChart1){
@@ -218,42 +232,44 @@ export class HomePage {
  
         });
     }
-  
-  /*graphs2(){
-    this.storage.get('userData').then((val) => {
-      this.authService.bathing(val['id']).subscribe((jsonResponse) => {
-        console.log(jsonResponse);
-        this.distance=jsonResponse.distance;
-        console.log("hi", this.distance, jsonResponse.distance)
-        this.soilmoist=jsonResponse.soilmoist;
-        this.temp=jsonResponse.temp;
-        this.navCtrl.push(Graphs_2Page, {"distance":this.distance, "soilmoist":this.soilmoist,"temp":this.temp});
-        });
-    })
-  }
-  graphs3(){
-    this.storage.get('userData').then((val) => {
-      this.authService.plants(val['id']).subscribe((jsonResponse) => {
-        console.log(jsonResponse);
-        this.distance=jsonResponse.distance;
-        console.log("hi", this.distance, jsonResponse.distance)
-        this.soilmoist=jsonResponse.soilmoist;
-        this.temp=jsonResponse.temp;
-        this.navCtrl.push(Graphs_3Page, {"distance":this.distance, "soilmoist":this.soilmoist,"temp":this.temp});
-        });
-    })
-  }
-  graphs4(){
-    this.storage.get('userData').then((val) => {
-      this.authService.car(val['id']).subscribe((jsonResponse) => {
-        console.log(jsonResponse);
-        this.distance=jsonResponse.distance;
-        console.log("hi", this.distance, jsonResponse.distance)
-        this.soilmoist=jsonResponse.soilmoist;
-        this.temp=jsonResponse.temp;
-        this.navCtrl.push(Graphs_4Page, {"distance":this.distance, "soilmoist":this.soilmoist,"temp":this.temp});
-        });
-    })
-  }*/
+    switchOff(category: number) {
+        console.log("SwitchingOff", category)
+        if (category == 1) {
+            this.DrinkingActuator = false;
+        }
+        else if (category == 2) {
+            this.BathingActuator = false;
+        }
+        else if (category == 3) {
+            this.PlantsActuator = false;
+        }
+        else if (category == 4) {
+            this.CarActuator = false;
+        }
+    }
+    switchOn(category: number) {
+        console.log("SwitchinOn", category);
+        if (category == 1) {
+            this.DrinkingActuator = true;
+        }
+        else if (category == 2) {
+            this.BathingActuator = true;
+        }
+        else if (category == 3) {
+            this.PlantsActuator = true;
+        }
+        else if (category == 4) {
+            this.CarActuator = true;
+        }
+    }
+
+    changeMode(mode: number) {
+        if (mode == 0) {
+            this.mode = true;
+        }
+        else {
+            this.mode = false;
+        }
+    }
 
 }
