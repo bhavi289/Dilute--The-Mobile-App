@@ -72,11 +72,11 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-      this.DrinkingActuator = false;
-      this.BathingActuator = true;
-      this.PlantsActuator = false;
-      this.CarActuator = true;
-      this.mode = true;
+    //   this.DrinkingActuator = true;
+    //   this.BathingActuator = true;
+    //   this.PlantsActuator = false;
+    //   this.CarActuator = true;
+    //   this.mode = true;
       
     console.log('ionViewDidLoad HomePage');
     this.storage.get('userData').then((val) => {
@@ -110,8 +110,15 @@ export class HomePage {
 
             this.plotGraph(this.drinking_distance, this.plant_distance, this.car_distance, this.bathing_distance);
             });            
+        });
+      
+      this.authService.getActuatorStatus().subscribe((jsonResponse) => {
+          console.log("Actuator Statuses", jsonResponse);
+          this.DrinkingActuator = jsonResponse.drinkingWaterActuatorStatus;  
+          this.BathingActuator = jsonResponse.bathingWaterActuatorStatus;
+          this.PlantsActuator = jsonResponse.plantWaterActuatorStatus; 
+          this.CarActuator = jsonResponse.carWaterActuatorStatus;                                         
       });
-
     
   }
 
@@ -239,32 +246,92 @@ export class HomePage {
         });
     }
     switchOff(category: number) {
+        let loading = this.loadingCtrl.create({
+            content: "<div>Turning Off...</div>",
+            duration: 10000
+        });
+        loading.present();
+        
         console.log("SwitchingOff", category)
         if (category == 1) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 12, 0).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.DrinkingActuator = false;
         }
         else if (category == 2) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 20, 0).subscribe((jsonResponse) => {
+                  loading.dismiss();
+                  console.log(jsonResponse);
+                });
+            });
             this.BathingActuator = false;
         }
         else if (category == 3) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 26, 0).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.PlantsActuator = false;
         }
         else if (category == 4) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 16, 0).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.CarActuator = false;
         }
     }
     switchOn(category: number) {
+        let loading = this.loadingCtrl.create({
+            content: "<div>Turning On...</div>",
+            duration: 10000
+        });
+        loading.present();
+        
         console.log("SwitchinOn", category);
         if (category == 1) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 12, 1).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.DrinkingActuator = true;
         }
         else if (category == 2) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 20, 1).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.BathingActuator = true;
         }
         else if (category == 3) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 26, 1).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.PlantsActuator = true;
         }
         else if (category == 4) {
+            this.storage.get('userData').then((val) => {
+                this.authService.controlActuator(val['email'], 16, 1).subscribe((jsonResponse) => {
+                  loading.dismiss();                    
+                    console.log(jsonResponse);
+                });
+            });
             this.CarActuator = true;
         }
     }

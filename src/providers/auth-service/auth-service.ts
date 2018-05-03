@@ -16,15 +16,51 @@ export class AuthServiceProvider {
     loginurl : string;
     drinkingurl : string;
     getQuantityDetailsurl : string;
-    getCurrentDataurl : string;
+    getCurrentDataurl: string;
+    getactuatorstatusurl: string;
+    controlactuatorurl: string;
 
     constructor(public http: Http) {
         console.log('Hello AuthServiceProvider Provider');
         this.http = http;
         this.loginurl = "http://127.0.0.1:8000/api/login/";
         this.getQuantityDetailsurl = "http://127.0.0.1:8000/api/getQuantityDetailsurl/";
-        this.getCurrentDataurl = "http://127.0.0.1:8000/api/getCurrentData/"
+        this.getCurrentDataurl = "http://127.0.0.1:8000/api/getCurrentData/";
+        this.getactuatorstatusurl = "http://127.0.0.1:8000/api/dataUpdate/";
+        this.controlactuatorurl = "http://127.0.0.1:8000/api/controlActuator/";
+        
         // this.drinkingurl = "http://localhost:8000/sensors/api/drinking/";
+    }
+
+    controlActuator(email, value, action) {
+        let body = {
+            "email": email,
+            "value": value,
+            "action" : action,
+        };
+
+        let headers = new Headers({
+            'Content-Type' : 'application/json; charset=utf-8'
+        });
+        let options = new RequestOptions({ headers: headers});
+        console.log(body);
+        return this.http.post(this.controlactuatorurl, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    getActuatorStatus() {
+        let body = {
+        };
+
+        let headers = new Headers({
+            'Content-Type' : 'application/json; charset=utf-8'
+        });
+        let options = new RequestOptions({ headers: headers});
+        console.log(body);
+        return this.http.post(this.getactuatorstatusurl, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
 
     login(user_credentials) {
