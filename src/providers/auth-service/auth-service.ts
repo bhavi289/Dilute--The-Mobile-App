@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-/*
+/* ionic pro
   Generated class for the AuthServiceProvider provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
