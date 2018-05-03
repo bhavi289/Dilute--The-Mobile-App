@@ -100,7 +100,13 @@ export class HomePage {
             this.bathing_distance = jsonResponse.bathing_distance;
             this.car_distance = jsonResponse.car_distance;
             this.date = jsonResponse.date;
-            this.time = jsonResponse.time;
+              this.time = jsonResponse.time;
+            
+              this.drinking_distance = Math.round(this.drinking_distance * 100) / 100;
+              this.plant_distance = Math.round(this.plant_distance * 100) / 100;
+              this.bathing_distance = Math.round(this.bathing_distance * 100) / 100;
+              this.car_distance = Math.round(this.car_distance * 100) / 100;
+              
 
             this.plotGraph(this.drinking_distance, this.plant_distance, this.car_distance, this.bathing_distance);
             });            

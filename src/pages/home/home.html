@@ -74,7 +74,7 @@
 			<ion-list>
 			  <ion-item>
 			    <h2>DRINKING</h2>
-          <p>Quantity:<span>10%</span></p> 
+          <p>Quantity: <span>{{drinking_distance}}%</span></p> 
           
 			    <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
 			    	<ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -90,7 +90,7 @@
         <ion-list>
           <ion-item>
             <h2>DRINKING</h2>
-            <p>Quantity:<span>10%</span></p> 
+            <p>Quantity: <span>{{drinking_distance}}%</span></p> 
             
             <button (click)="switchOn(1)" ion-button  outline icon-only item-end>
               <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -107,7 +107,7 @@
           <ion-list>
             <ion-item>
               <h2>BATHING</h2>
-              <p>Quantity:<span>10%</span></p> 
+              <p>Quantity: <span>{{bathing_distance}}%</span></p> 
               
               <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
                 <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -123,7 +123,7 @@
             <ion-list>
               <ion-item>
                 <h2>BATHING</h2>
-                <p>Quantity:<span>10%</span></p> 
+                <p>Quantity: <span>{{bathing_distance}}%</span></p> 
                 
                 <button  (click)="switchOn(2)" ion-button  outline icon-only item-end>
                   <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -140,7 +140,7 @@
               <ion-list>
                 <ion-item>
                   <h2>PLANTS</h2>
-                  <p>Quantity:<span>10%</span></p> 
+                  <p>Quantity: <span>{{plant_distance}}%</span></p> 
                   
                   <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
                     <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -156,7 +156,7 @@
                 <ion-list>
                   <ion-item>
                     <h2>PLANTS</h2>
-                    <p>Quantity:<span>10%</span></p> 
+                    <p>Quantity: <span>{{plant_distance}}%</span></p> 
                     
                     <button (click)="switchOn(3)" ion-button  outline icon-only item-end>
                       <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -173,7 +173,7 @@
                   <ion-list>
                     <ion-item>
                       <h2>CAR</h2>
-                      <p>Quantity:<span>10%</span></p> 
+                      <p>Quantity: <span>{{car_distance}}%</span></p> 
                       
                       <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
                         <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -189,7 +189,7 @@
                     <ion-list>
                       <ion-item>
                         <h2>CAR</h2>
-                        <p>Quantity:<span>10%</span></p> 
+                        <p>Quantity: <span>{{car_distance}}%</span></p> 
                         
                         <button (click)="switchOn(4)" ion-button  outline icon-only item-end>
                           <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -209,7 +209,7 @@
                         <ion-list>
                           <ion-item>
                             <h2>DRINKING</h2>
-                            <p>Quantity:<span>10%</span></p> 
+                            <p>Quantity: <span>{{drinking_distance}}%</span></p> 
                             
                             <button   ion-button  outline icon-only item-end>
                               <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -225,9 +225,14 @@
                           <ion-list>
                             <ion-item>
                               <h2>DRINKING</h2>
-                              <p>Quantity:<span>10%</span></p> 
+                              <p>Quantity: <span>{{drinking_distance}}%</span></p> 
                               
-                              <p item-end> switch to manual</p>
+                              <button   ion-button  outline icon-only item-end>
+                                  <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                </button>
+                                 <button   class="" ion-button outline icon-only item-end>
+                                  <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                </button>
                     
                             </ion-item>
                           </ion-list>
@@ -237,7 +242,7 @@
                             <ion-list>
                               <ion-item>
                                 <h2>BATHING</h2>
-                                <p>Quantity:<span>10%</span></p> 
+                                <p>Quantity: <span>{{bathing_distance}}%</span></p> 
                                 
                                 <button   ion-button  outline icon-only item-end>
                                   <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -253,7 +258,7 @@
                               <ion-list>
                                 <ion-item>
                                   <h2>BATHING</h2>
-                                  <p>Quantity:<span>10%</span></p> 
+                                  <p>Quantity: <span>{{bathing_distance}}%</span></p> 
                                   
                                   <button  ion-button  outline icon-only item-end>
                                     <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -270,7 +275,7 @@
                                 <ion-list>
                                   <ion-item>
                                     <h2>PLANTS</h2>
-                                    <p>Quantity:<span>10%</span></p> 
+                                    <p>Quantity: <span>{{plant_distance}}%</span></p> 
                                     
                                     <button  ion-button  outline icon-only item-end>
                                       <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -286,7 +291,7 @@
                                   <ion-list>
                                     <ion-item>
                                       <h2>PLANTS</h2>
-                                      <p>Quantity:<span>10%</span></p> 
+                                      <p>Quantity: <span>{{plant_distance}}</span></p> 
                                       
                                       <button ion-button  outline icon-only item-end>
                                         <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -303,7 +308,7 @@
                                     <ion-list>
                                       <ion-item>
                                         <h2>CAR</h2>
-                                        <p>Quantity:<span>10%</span></p> 
+                                        <p>Quantity: <span>{{car_distance}}%</span></p> 
                                         
                                         <button  ion-button  outline icon-only item-end>
                                           <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -319,7 +324,7 @@
                                       <ion-list>
                                         <ion-item>
                                           <h2>CAR</h2>
-                                          <p>Quantity:<span>10%</span></p> 
+                                          <p>Quantity: <span>{{car_distance}}%</span></p> 
                                           
                                           <button  ion-button  outline icon-only item-end>
                                             <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
@@ -333,3 +338,5 @@
                                     </ion-card>      
                                     
                                     </div>
+
+                                    <button ion-button block (click)="date_wise_data()">SEE ANALYTICS</button>
