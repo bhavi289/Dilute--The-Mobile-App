@@ -1,0 +1,134 @@
+page-attendance-two {
+.header{ 
+  background:#2f83ff;
+  .toolbar {
+      min-height: 48px;
+  	 .bar-button{
+  	 	font-size: 13px;
+  	 	width: 33px;
+  	 }
+  }
+}
+.busroot{ 
+    &.card{
+    	margin: 0;
+        border-radius: 0;
+        box-shadow: none; 
+     	bottom:0;
+      	width: 100%; 
+      .item{ 
+	      background:#2f83ff; 
+	      padding-left: 10px;
+	      .icon{
+	            color: #fff;
+			    font-size: 19px;
+			    vertical-align: bottom;
+			    margin: 9px 0 0 0;
+	      }
+	      .item-inner{
+	      	margin-left: 2px;
+		      .label{
+		      	    margin: 8px 8px 8px 0px;
+				    font-size: 13px;
+				    color: #fff;
+				    font-weight: normal;
+		      	} 
+	      }
+	      .badge{
+	        background: none;
+		    font-weight: normal;
+		    font-size: 13px;
+		    strong{
+		    	font-weight:normal;
+		    	font-size: 13px;
+		    }
+	      } 
+      	}
+    }
+}
+.attendance-hader{
+	&.list{
+	    background: none;
+    	margin: 10px 0 10px 0;
+		.item{
+			text-transform: uppercase;
+		    font-size: 14px;
+		    color: #858686;
+		    border: none;
+			background:none;
+			font-weight: 600;
+			.badge{
+			    background: none;
+			    padding: 0;
+			    margin: 0;
+			    border: 0;
+			    border-radius: 0;
+				button{
+				    font-size: 12px;
+				    background: #3ad74a;
+				    border-radius: 4px;
+				    box-shadow: none;
+				    height: 33px;
+				    text-transform: uppercase;
+				}
+			}
+		}
+	}
+}
+.card {
+		&.listof-leader{
+			border-radius: 6px;
+		   -webkit-box-shadow: 0 6px 4px 3px rgba(224, 224, 224, 0.4);
+			box-shadow: 0 6px 4px 3px rgba(224, 224, 224, 0.4);
+		    margin:6px 12px 5px;
+		    border-left: 2px solid #4B99C9; 
+			.list {
+			.item{
+				button{
+				    width: 30px;
+				    height: 30px;
+				    border-radius: 4px;
+				   	color: #848484;
+    				border: 1px solid #d2d2d2;
+				    text-align: center;
+				    margin: 4px;
+					    &.tick{
+						    color: #fff;
+						    border: 1px solid #3ad74a;
+						    background:#3ad74a;
+					    }
+					    &.untick{
+						    color: #fff;
+						    border: 1px solid #ef8788;
+						    background:#ef8788;
+					    }
+					}
+				&:last-child{
+					border-bottom:none;
+				}
+				.item-wrapper{
+						&:last-child{
+							&.item-block{
+								border-bottom:none;
+							 }
+						}
+					 }
+				} 
+			}
+		} 
+	}
+	.label {
+		h2 {
+		    font-size: 13px;
+		    font-weight: 600;
+		    color: #354052;
+		}
+		p {
+		    color: #B6BCC8;
+    		font-size: 12px;
+    		span {
+    			color: #606978;
+    		}
+		}
+	} 
+}

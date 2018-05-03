@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/catch';-
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -16,12 +16,14 @@ export class AuthServiceProvider {
     loginurl : string;
     drinkingurl : string;
     getQuantityDetailsurl : string;
+    getCurrentDataurl : string;
 
     constructor(public http: Http) {
         console.log('Hello AuthServiceProvider Provider');
         this.http = http;
         this.loginurl = "http://127.0.0.1:8000/api/login/";
         this.getQuantityDetailsurl = "http://127.0.0.1:8000/api/getQuantityDetailsurl/";
+        this.getCurrentDataurl = "http://127.0.0.1:8000/api/getCurrentData/"
         // this.drinkingurl = "http://127.0.0.1:8000/sensors/api/drinking/";
     }
 
@@ -40,9 +42,9 @@ export class AuthServiceProvider {
             .map(res => res.json())
             .catch(this.handleError);
     }
-    getQuantityDetails(id,email){
+
+    getQuantityDetails(email){
         let body = {
-            "id":id,
             "email":email,
         };
 
@@ -55,6 +57,24 @@ export class AuthServiceProvider {
             .map(res => res.json())
             .catch(this.handleError);        
     }
+
+    getCurrentData(email){
+        let body = {
+            "email":email,
+        };
+
+        let headers = new Headers({
+            'Content-Type' : 'application/json; charset=utf-8'
+        });
+        let options = new RequestOptions({ headers: headers});
+        console.log(body);
+        return this.http.post(this.getCurrentDataurl, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);        
+    }
+
+
+
     // drinking(id){
     //     let body = {
     //         "id":id,
