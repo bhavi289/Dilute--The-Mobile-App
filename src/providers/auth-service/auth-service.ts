@@ -24,12 +24,12 @@ export class AuthServiceProvider {
     constructor(public http: Http) {
         console.log('Hello AuthServiceProvider Provider');
         this.http = http;
-        this.loginurl = "http://127.0.0.1:8000/api/login/";
-        this.getQuantityDetailsurl = "http://127.0.0.1:8000/api/getQuantityDetailsurl/";
-        this.getCurrentDataurl = "http://127.0.0.1:8000/api/getCurrentData/";
-        this.getactuatorstatusurl = "http://127.0.0.1:8000/api/dataUpdate/";
-        this.controlactuatorurl = "http://127.0.0.1:8000/api/controlActuator/";
-        this.changeactuatorstatusurl = "http://127.0.0.1:8000/api/changeactuatorstatus/"
+        this.loginurl = "http://139.59.17.224:80/api/login/";
+        this.getQuantityDetailsurl = "http://139.59.17.224:80/api/getQuantityDetailsurl/";
+        this.getCurrentDataurl = "http://139.59.17.224:80/api/getCurrentData/";
+        this.getactuatorstatusurl = "http://139.59.17.224:80/api/dataUpdate/";
+        this.controlactuatorurl = "http://139.59.17.224:80/api/controlActuator/";
+        this.changeactuatorstatusurl = "http://139.59.17.224:80/api/changeactuatorstatus/"
         
         // this.drinkingurl = "http://localhost:8000/sensors/api/drinking/";
     }
