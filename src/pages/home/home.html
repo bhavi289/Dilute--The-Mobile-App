@@ -103,6 +103,39 @@
         </ion-list>
       </ion-card>
 
+      <ion-card *ngIf="CarActuator" class="listof-leader">
+          <ion-list>
+            <ion-item>
+              <h2>CAR</h2>
+              <p>Quantity: <span>{{car_distance}}%</span></p> 
+              
+              <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
+                <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+              </button>
+               <button (click)="switchOff(4)" class="" ion-button outline icon-only item-end>
+                <ion-icon  name="ios-close-outline"></ion-icon>			    	
+              </button>
+    
+            </ion-item>
+          </ion-list>
+        </ion-card>
+        <ion-card *ngIf="!CarActuator" class="listof-leader">
+            <ion-list>
+              <ion-item>
+                <h2>CAR</h2>
+                <p>Quantity: <span>{{car_distance}}%</span></p> 
+                
+                <button (click)="switchOn(4)" ion-button  outline icon-only item-end>
+                  <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                </button>
+                 <button  [ngStyle]="{'background-color': buttonColor2}" class="" ion-button outline icon-only item-end>
+                  <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                </button>
+      
+              </ion-item>
+            </ion-list>
+          </ion-card> 
+
       <ion-card *ngIf="BathingActuator" class="listof-leader">
           <ion-list>
             <ion-item>
@@ -135,6 +168,8 @@
               </ion-item>
             </ion-list>
           </ion-card>
+
+          
 
           <ion-card *ngIf="PlantsActuator" class="listof-leader">
               <ion-list>
@@ -169,38 +204,7 @@
                 </ion-list>
               </ion-card>
 
-              <ion-card *ngIf="CarActuator" class="listof-leader">
-                  <ion-list>
-                    <ion-item>
-                      <h2>CAR</h2>
-                      <p>Quantity: <span>{{car_distance}}%</span></p> 
-                      
-                      <button  [ngStyle]="{'background-color': buttonColor}" ion-button  outline icon-only item-end>
-                        <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
-                      </button>
-                       <button (click)="switchOff(4)" class="" ion-button outline icon-only item-end>
-                        <ion-icon  name="ios-close-outline"></ion-icon>			    	
-                      </button>
-            
-                    </ion-item>
-                  </ion-list>
-                </ion-card>
-                <ion-card *ngIf="!CarActuator" class="listof-leader">
-                    <ion-list>
-                      <ion-item>
-                        <h2>CAR</h2>
-                        <p>Quantity: <span>{{car_distance}}%</span></p> 
-                        
-                        <button (click)="switchOn(4)" ion-button  outline icon-only item-end>
-                          <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
-                        </button>
-                         <button  [ngStyle]="{'background-color': buttonColor2}" class="" ion-button outline icon-only item-end>
-                          <ion-icon  name="ios-close-outline"></ion-icon>			    	
-                        </button>
-              
-                      </ion-item>
-                    </ion-list>
-                  </ion-card>      
+                   
                   
                   </div>
                   
@@ -238,6 +242,39 @@
                           </ion-list>
                         </ion-card>
                   
+                        <ion-card *ngIf="CarActuator" class="listof-leader">
+                            <ion-list>
+                              <ion-item>
+                                <h2>CAR</h2>
+                                <p>Quantity: <span>{{car_distance}}%</span></p> 
+                                
+                                <button  ion-button  outline icon-only item-end>
+                                  <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                </button>
+                                 <button  class="" ion-button outline icon-only item-end>
+                                  <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                </button>
+                      
+                              </ion-item>
+                            </ion-list>
+                          </ion-card>
+                          <ion-card *ngIf="!CarActuator" class="listof-leader">
+                              <ion-list>
+                                <ion-item>
+                                  <h2>CAR</h2>
+                                  <p>Quantity: <span>{{car_distance}}%</span></p> 
+                                  
+                                  <button  ion-button  outline icon-only item-end>
+                                    <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
+                                  </button>
+                                   <button  class="" ion-button outline icon-only item-end>
+                                    <ion-icon  name="ios-close-outline"></ion-icon>			    	
+                                  </button>
+                        
+                                </ion-item>
+                              </ion-list>
+                            </ion-card>
+
                         <ion-card *ngIf="BathingActuator" class="listof-leader">
                             <ion-list>
                               <ion-item>
@@ -304,38 +341,7 @@
                                   </ion-list>
                                 </ion-card>
                   
-                                <ion-card *ngIf="CarActuator" class="listof-leader">
-                                    <ion-list>
-                                      <ion-item>
-                                        <h2>CAR</h2>
-                                        <p>Quantity: <span>{{car_distance}}%</span></p> 
-                                        
-                                        <button  ion-button  outline icon-only item-end>
-                                          <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
-                                        </button>
-                                         <button  class="" ion-button outline icon-only item-end>
-                                          <ion-icon  name="ios-close-outline"></ion-icon>			    	
-                                        </button>
-                              
-                                      </ion-item>
-                                    </ion-list>
-                                  </ion-card>
-                                  <ion-card *ngIf="!CarActuator" class="listof-leader">
-                                      <ion-list>
-                                        <ion-item>
-                                          <h2>CAR</h2>
-                                          <p>Quantity: <span>{{car_distance}}%</span></p> 
-                                          
-                                          <button  ion-button  outline icon-only item-end>
-                                            <ion-icon  name="ios-checkmark-outline"></ion-icon>			    	
-                                          </button>
-                                           <button  class="" ion-button outline icon-only item-end>
-                                            <ion-icon  name="ios-close-outline"></ion-icon>			    	
-                                          </button>
-                                
-                                        </ion-item>
-                                      </ion-list>
-                                    </ion-card>      
+                                      
                                     
                                     </div>
 

@@ -19,6 +19,7 @@ export class AuthServiceProvider {
     getCurrentDataurl: string;
     getactuatorstatusurl: string;
     controlactuatorurl: string;
+    changeactuatorstatusurl: string;
 
     constructor(public http: Http) {
         console.log('Hello AuthServiceProvider Provider');
@@ -28,8 +29,25 @@ export class AuthServiceProvider {
         this.getCurrentDataurl = "http://127.0.0.1:8000/api/getCurrentData/";
         this.getactuatorstatusurl = "http://127.0.0.1:8000/api/dataUpdate/";
         this.controlactuatorurl = "http://127.0.0.1:8000/api/controlActuator/";
+        this.changeactuatorstatusurl = "http://127.0.0.1:8000/api/changeactuatorstatus/"
         
         // this.drinkingurl = "http://localhost:8000/sensors/api/drinking/";
+    }
+
+    changeActuatorStatus(email, value) {
+        let body = {
+            "email": email,
+            "value":value,
+        };
+
+        let headers = new Headers({
+            'Content-Type' : 'application/json; charset=utf-8'
+        });
+        let options = new RequestOptions({ headers: headers});
+        console.log(body);
+        return this.http.post(this.changeactuatorstatusurl, body, options)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
 
     controlActuator(email, value, action) {

@@ -117,7 +117,13 @@ export class HomePage {
           this.DrinkingActuator = jsonResponse.drinkingWaterActuatorStatus;  
           this.BathingActuator = jsonResponse.bathingWaterActuatorStatus;
           this.PlantsActuator = jsonResponse.plantWaterActuatorStatus; 
-          this.CarActuator = jsonResponse.carWaterActuatorStatus;                                         
+          this.CarActuator = jsonResponse.carWaterActuatorStatus; 
+          if (jsonResponse.actuator_control == 1) {
+              this.mode = false;
+          }
+          else {
+              this.mode = true;
+          }
       });
     
   }
@@ -338,9 +344,29 @@ export class HomePage {
 
     changeMode(mode: number) {
         if (mode == 0) {
+            let loading = this.loadingCtrl.create({
+                content: "<div>Switching To Automatic ..</div>",
+                duration: 10000
+            });
+            loading.present();
+            this.storage.get('userData').then((val) => {
+                this.authService.changeActuatorStatus(val['email'],0).subscribe((jsonResponse) => {
+                    loading.dismiss();
+                });
+            });
             this.mode = true;
         }
         else {
+            let loading = this.loadingCtrl.create({
+                content: "<div>Switching To Manual ..</div>",
+                duration: 10000
+            });
+            loading.present();
+            this.storage.get('userData').then((val) => {
+                this.authService.changeActuatorStatus(val['email'],1).subscribe((jsonResponse) => {
+                    loading.dismiss();
+                });
+            });    
             this.mode = false;
         }
     }
