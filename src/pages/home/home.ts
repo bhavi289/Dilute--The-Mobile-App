@@ -279,7 +279,7 @@ export class HomePage {
         }
         else if (category == 3) {
             this.storage.get('userData').then((val) => {
-                this.authService.controlActuator(val['email'], 26, 0).subscribe((jsonResponse) => {
+                this.authService.controlActuator(val['email'], 21, 0).subscribe((jsonResponse) => {
                   loading.dismiss();                    
                     console.log(jsonResponse);
                 });
@@ -324,7 +324,7 @@ export class HomePage {
         }
         else if (category == 3) {
             this.storage.get('userData').then((val) => {
-                this.authService.controlActuator(val['email'], 26, 1).subscribe((jsonResponse) => {
+                this.authService.controlActuator(val['email'], 21, 1).subscribe((jsonResponse) => {
                   loading.dismiss();                    
                     console.log(jsonResponse);
                 });
