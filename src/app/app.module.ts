@@ -18,14 +18,14 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    HomePage,
-    ViewProfilePage,
-    GraphsPage,
-    Graphs_2Page,
-    Graphs_3Page,
-    Graphs_4Page,
-    Page1Page
+    // LoginPage,
+    // HomePage,
+    // ViewProfilePage,
+    // GraphsPage,
+    // Graphs_2Page,
+    // Graphs_3Page,
+    // Graphs_4Page,
+    // Page1Page
   ],
   imports: [
     BrowserModule,
